@@ -48,10 +48,14 @@ class AccessLoggingLayout extends HTMLLayout {
     row += "<tr>" + LINE_SEPARATOR
     var converter = head
     while (converter != null) {
-      row += "<td>" + Transform.escapeTags(converter.convert(event)) + "</td>" + LINE_SEPARATOR
+      row += "<td>" + unescapeSafeTags(Transform.escapeTags(converter.convert(event))) + "</td>" + LINE_SEPARATOR
       converter = converter.getNext
     }
     row + "</tr>" + LINE_SEPARATOR
+  }
+
+  private def unescapeSafeTags(escaped: String): String = {
+    escaped.replace("&lt;br&gt;", "<br>")
   }
 
   private def buildHeaderRowForTable: String = {
