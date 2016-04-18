@@ -1,5 +1,5 @@
 name := "play-logback-layout"
-version := "1.0"
+version := "1.1"
 scalaVersion := "2.11.7"
 
 lazy val playlogbacklayout = project in file(".")
